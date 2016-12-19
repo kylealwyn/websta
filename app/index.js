@@ -4,6 +4,8 @@ import debounce from 'debounce';
 import createStore from './redux/store';
 import App from './components/App';
 
+import './styles/app.global.css';
+
 const state = JSON.parse(localStorage.getItem('state'));
 const store = createStore(state || {});
 
@@ -18,10 +20,11 @@ const saveState = debounce(() => {
 store.subscribe(saveState);
 
 if (module.hot) {
-  module.hot.accept('./components/App', function() {
-    let newApp = require('./components/App').default;
-    render(newApp);
+  module.hot.accept('./components/App', () => {
+    // eslint-disable-next-line global-require
+    const hotApp = require('./components/App').default;
+    render(hotApp);
   });
 }
 
-render(App)
+render(App);

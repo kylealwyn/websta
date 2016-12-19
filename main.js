@@ -1,22 +1,22 @@
-var menubar = require('menubar')
-var axios = require('axios')
-var mb = menubar({
-  height: 200,
-  width: 400,
-  preloadWindow: true,
-  resizable: false
-})
+const menubar = require('menubar');
 
-mb.on('ready', function ready () {
-  console.log('app is ready')
-})
+const menubarConfig = {
+  height: 50,
+  width: 300,
+  resizable: false,
+  windowPosition: 'trayLeft'
+};
 
+const mb = menubar(menubarConfig);
+
+mb.on('ready', () => {});
 mb.on('after-create-window', () => {
-  // axios.get('http://localhost:4567')
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   })
-})
+  if (process.env.ENV === 'development') {
+    mb.window.webContents.openDevTools();
+  }
+});
+
+if (process.env.ENV === 'development') {
+  // eslint-disable-next-line no-console
+  console.log(process.versions);
+}

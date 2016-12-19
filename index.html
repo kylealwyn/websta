@@ -7,11 +7,11 @@
   <body>
     <div id="root"></div>
     <script>
-      (function() {
-        const script = document.createElement('script');
-        script.src = process.env.ENV === 'development' ? 'http://localhost:9000/dist/bundle.js' : './dist/bundle.js';
-        document.head.appendChild(script);
-      }());
+      if (typeof process === 'object' && process.env.ENV === 'development') {
+        const bundle = document.createElement('script');
+        bundle.src = 'http://localhost:9000/dist/bundle.js';
+        document.head.appendChild(bundle);
+      }
     </script>
   </body>
 </html>

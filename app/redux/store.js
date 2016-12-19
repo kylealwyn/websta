@@ -7,23 +7,24 @@ import rootReducer from './reducers';
 export default (initialState) => {
   const middlewares = [
     thunk
-  ]
+  ];
 
-  if (process.env.ENV === 'development') {
-    middlewares.push(logger)
+  if (typeof process === 'object' && process.env.ENV === 'development') {
+    middlewares.push(logger);
   }
 
   const enhancers = compose(
     applyMiddleware(...middlewares)
-  )
+  );
 
   const store = createStore(rootReducer, initialState, enhancers);
 
   if (module.hot) {
     module.hot.accept(() => {
-      store.replaceReducer("./reducers", require("./reducers").default)
-    })
+      // eslint-disable-next-line global-require
+      store.replaceReducer('./reducers', require('./reducers').default);
+    });
   }
 
-  return store
+  return store;
 };
