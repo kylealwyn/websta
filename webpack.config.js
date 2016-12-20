@@ -60,7 +60,7 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      '__DEV__': isDevelopment,
+      __DEV__: isDevelopment,
       'process.env.NODE_ENV': JSON.stringify(process.env.ENV)
     })
   ]

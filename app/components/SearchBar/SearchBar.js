@@ -12,7 +12,6 @@ class SearchBar extends Component {
   }
 
   componentDidMount() {
-    console.log(this);
     this.awesome = new Awesomplete(this.searchInput, {
       list: ['Ada', 'Java', 'JavaScript', 'Brainfuck', 'LOLCODE', 'Node.js', 'Ruby on Rails']
     });

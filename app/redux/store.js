@@ -6,12 +6,9 @@ import { routerMiddleware } from 'react-router-redux';
 import throttle from 'lodash/throttle';
 import { loadState, saveState } from '../lib/local-storage';
 import rootReducer from './reducers';
-// import rootSaga from '../sagas';
+import asyncMiddleware from './middleware/async';
 
-const middlewares = [
-  thunk,
-  routerMiddleware(hashHistory)
-];
+const middlewares = [thunk, asyncMiddleware, routerMiddleware(hashHistory)];
 
 let composeEnhancers = compose;
 
