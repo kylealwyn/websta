@@ -9,7 +9,7 @@
     <script>
       if (typeof process === 'object' && process.env.ENV === 'development') {
         const bundle = document.createElement('script');
-        bundle.src = 'http://localhost:9000/dist/bundle.js';
+        bundle.src = 'http://localhost:9000/build/bundle.js';
         document.head.appendChild(bundle);
       }
     </script>

@@ -21,10 +21,14 @@
     "react/jsx-no-bind": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": "off",
+    "react/forbid-prop-types": "off"
   },
   "plugins": [
     "import",
     "promise",
     "react"
-  ]
+  ],
+  "globals": {
+    "__DEV__": true
+  }
 }

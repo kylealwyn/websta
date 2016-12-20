@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 
-import SearchBar from './SearchBar';
+const App = ({ children }) => (
+  <div>
+    {children}
+  </div>
+);
 
-class App extends Component {
-  render() {
-    return (
-      <div className="myDiv">
-        <SearchBar />
-      </div>
-    );
-  }
-}
+App.propTypes = {
+  children: PropTypes.object.isRequired
+};
 
 export default App;

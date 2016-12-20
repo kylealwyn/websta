@@ -6,7 +6,7 @@ const BabiliPlugin = require('babili-webpack-plugin');
 
 const Paths = {
   Entry: './app/index',
-  Output: './build',
+  Output: `${__dirname}/build`,
   Public: 'http://localhost:9000/build/',
   Build: './build'
 };
@@ -18,6 +18,7 @@ const cssModuleLoader = 'css-loader?modules&sourceMap&importLoaders=1&localIdent
 const isDevelopment = process.env.ENV === 'development';
 
 const config = {
+  devtool: 'cheap-module-source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true&path=http://localhost:9000/__webpack_hmr',
     Paths.Entry,
@@ -59,6 +60,7 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      '__DEV__': isDevelopment,
       'process.env.NODE_ENV': JSON.stringify(process.env.ENV)
     })
   ]
@@ -74,13 +76,16 @@ if (process.env.ENV === 'development') {
 }
 
 if (process.env.ENV === 'production') {
-  console.log('buliding production');
+  // Drops css and js files in top level of build folder
   config.output.publicPath = '';
-  // shave off webpack dev server entrypoint
+
+  // Shave off webpack dev server entrypoint
   config.entry.shift();
+
+  // Production only plugins
   config.plugins.push(
     new webpack.optimize.OccurrenceOrderPlugin(),
-    // new BabiliPlugin(),
+    new BabiliPlugin(),
     new ExtractTextPlugin('bundle.css', { allChunks: true }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
