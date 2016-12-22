@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const App = ({ children }) => (
-  <div>
+  <div className="websta">
     {children}
   </div>
 );

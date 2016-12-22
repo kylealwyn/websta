@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Websta</title>
   </head>
   <body>
     <div id="root"></div>
     <script>
       if (typeof process === 'object' && process.env.ENV === 'development') {
         const bundle = document.createElement('script');
-        bundle.src = 'http://localhost:9000/build/bundle.js';
+        bundle.src = 'http://localhost:3000/build/bundle.js';
         document.head.appendChild(bundle);
       }
     </script>

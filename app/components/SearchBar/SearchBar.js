@@ -3,12 +3,8 @@ import Awesomplete from 'awesomplete';
 import styles from './SearchBar.css';
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      query: ''
-    };
+  state = {
+    query: ''
   }
 
   componentDidMount() {
@@ -35,6 +31,7 @@ class SearchBar extends Component {
         <form>
           <input
             type="text"
+            placeholder="Start typing..."
             className={styles.searchInput}
             ref={(input) => { this.searchInput = input; }}
             onChange={this.handleQueryChange.bind(this)}

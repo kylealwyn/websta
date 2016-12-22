@@ -56,12 +56,14 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.24.1",
     "postcss-loader": "^0.8.2",
+    "react-hot-loader": "^3.0.0-beta.2",
     "redux-logger": "^2.7.4",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.10.0",
     "webpack-target-electron-renderer": "^0.4.0"
   }

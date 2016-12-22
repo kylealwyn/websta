@@ -1,20 +1,30 @@
-import express from 'express';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-
-import config from './webpack.config';
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.config');
 
 const compiler = webpack(config);
-const app = express();
-
-app.use(webpackDevMiddleware(compiler, {
+const wdsConfig = {
   publicPath: config.output.publicPath,
+  hot: true,
+  historyApiFallback: true,
+  quiet: false,
+  noInfo: false,
   stats: {
-    colors: true
+    assets: false,
+    colors: true,
+    version: false,
+    hash: false,
+    timings: false,
+    chunks: false,
+    chunkModules: false
   }
-}));
+};
 
-app.use(webpackHotMiddleware(compiler));
+const server = new WebpackDevServer(compiler, wdsConfig);
+server.listen(3000, 'localhost', (err) => {
+  if (err) {
+    console.log(err);
+  }
 
-app.listen(9000);
+  console.log('Listening at localhost:3000');
+});
