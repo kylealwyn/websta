@@ -7,9 +7,12 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './redux/store';
 import Root from './containers/Root';
 import './styles/app.global.css';
+import * as actions from './redux/actions';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
+
+store.dispatch(actions.createWordsAction());
 
 const ROOT_ID = 'root';
 

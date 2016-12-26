@@ -55,6 +55,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.24.1",
+    "json-loader": "^0.5.4",
     "postcss-loader": "^0.8.2",
     "react-hot-loader": "^3.0.0-beta.2",
     "redux-logger": "^2.7.4",

@@ -6,7 +6,7 @@ const Home = () => (
   <div className="page home">
     <SearchBar />
     <p>aaaa</p>
-    {/* <Link to="/favorites">ads</Link> */}
+    <Link to="/favorites">ads</Link>
     {/* if no suggestions, display quote
     if suggestions, display list */}
     {/* <SuggestionList /> */}

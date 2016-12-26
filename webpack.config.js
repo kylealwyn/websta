@@ -32,16 +32,17 @@ const config = {
     loaders: [{
       test: /\.jsx?$/,
       loaders: ['babel'],
-      exclude: /node_modules/
-    },
-    {
+      include: `${__dirname}/app`
+    }, {
+      test: /\.json$/,
+      loader: 'json'
+    }, {
       test: /\.global\.css$/,
       [cssLoaderKey]: isDevelopment ? [styleLoader, cssGlobalLoader] : ExtractTextPlugin.extract(
         styleLoader,
         cssGlobalLoader.split('?')[0]
       )
-    },
-    {
+    }, {
       test: /^((?!\.global).)*\.css$/,
       [cssLoaderKey]: isDevelopment ? [styleLoader, cssModuleLoader] : ExtractTextPlugin.extract(
         styleLoader,
