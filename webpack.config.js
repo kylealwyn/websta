@@ -1,15 +1,14 @@
 const webpack = require('webpack');
-const webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
 
 const isDevelopment = process.env.ENV === 'development';
 const Paths = {
-  Entry: './app/index',
+  Entry: `${__dirname}/app/index`,
   Output: `${__dirname}/build`,
-  Public: 'http://localhost:3000/build/',
-  Build: './build'
+  Build: `${__dirname}/build`,
+  Public: 'http://localhost:3000/build/'
 };
 
 const styleLoader = 'style-loader';
@@ -29,32 +28,32 @@ const config = {
     extensions: ['', '.js', '.jsx'],
   },
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      loaders: ['babel'],
-      include: `${__dirname}/app`
-    }, {
-      test: /\.json$/,
-      loader: 'json'
-    }, {
-      test: /\.global\.css$/,
-      [cssLoaderKey]: isDevelopment ? [styleLoader, cssGlobalLoader] : ExtractTextPlugin.extract(
-        styleLoader,
-        cssGlobalLoader.split('?')[0]
-      )
-    }, {
-      test: /^((?!\.global).)*\.css$/,
-      [cssLoaderKey]: isDevelopment ? [styleLoader, cssModuleLoader] : ExtractTextPlugin.extract(
-        styleLoader,
-        cssModuleLoader
-      )
-    },
-    { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-    { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-    { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
-    { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
-    { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
-    { test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/, loader: 'url' }]
+    // preLoaders: [
+    //   { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['eslint-loader'] }
+    // ],
+    loaders: [
+      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel'] },
+      { test: /\.json$/, loader: 'json' },
+      {
+        test: /\.global\.css$/,
+        [cssLoaderKey]: isDevelopment ? [styleLoader, cssGlobalLoader] : ExtractTextPlugin.extract(
+          styleLoader,
+          cssGlobalLoader.split('?')[0]
+        )
+      }, {
+        test: /^((?!\.global).)*\.css$/,
+        [cssLoaderKey]: isDevelopment ? [styleLoader, cssModuleLoader] : ExtractTextPlugin.extract(
+          styleLoader,
+          cssModuleLoader
+        )
+      },
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
+      { test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/, loader: 'url' }
+    ]
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -62,10 +61,9 @@ const config = {
       __DEV__: isDevelopment,
       'process.env.NODE_ENV': JSON.stringify(process.env.ENV)
     })
-  ]
+  ],
+  target: 'electron-renderer'
 };
-
-config.target = webpackTargetElectronRenderer(config);
 
 if (process.env.ENV === 'development') {
   config.entry.unshift(
@@ -83,9 +81,6 @@ if (process.env.ENV === 'development') {
 if (process.env.ENV === 'production') {
   // Drops css and js files in top level of build folder
   config.output.publicPath = '';
-
-  // Shave off webpack dev server entrypoint
-  config.entry.shift();
 
   // Production only plugins
   config.plugins.push(

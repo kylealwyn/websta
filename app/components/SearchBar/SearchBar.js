@@ -14,10 +14,10 @@ class SearchBar extends Component {
   }
 
   // TODO
-  componentDidReceiveProps() {
-    // this.awesome.list = this.props.suggestions;
-    // this.awesome.evaluate();
-  }
+  // componentDidReceiveProps() {
+  //   // this.awesome.list = this.props.suggestions;
+  //   // this.awesome.evaluate();
+  // }
 
   handleQueryChange(event) {
     this.setState({

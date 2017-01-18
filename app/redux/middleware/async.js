@@ -1,6 +1,6 @@
 const createAsyncMiddleware = () => ({ dispatch }) => next => action => {
   const { type, promise } = action;
-
+  console.log(action);
   if (promise instanceof Promise) {
     dispatch({ type: `${type}_REQUESTED` });
 

@@ -1,11 +1,11 @@
 import http from '../lib/http';
 
 class Words {
-  test() {
+  static test() {
     return http.get('/', {
       headers: { y: 'yo' }
     });
   }
 }
 
-export default new Words();
+export default Words;

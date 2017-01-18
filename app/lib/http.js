@@ -9,18 +9,18 @@ class Http {
   }
 
   request(method, url, options = {}) {
-    const opts = Object.assign({}, {
+    const requestConfig = Object.assign({}, {
       headers: {}
     }, options);
 
     if (localStorage.getItem('token')) {
-      opts.headers.Authorization = localStorage.getItem('token');
+      requestConfig.headers.Authorization = localStorage.getItem('token');
     }
 
     return this.axios({
       url,
       method,
-      ...opts
+      ...requestConfig
     });
   }
 
