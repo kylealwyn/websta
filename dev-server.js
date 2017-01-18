@@ -9,8 +9,7 @@ const wdsConfig = {
   historyApiFallback: true,
   quiet: false,
   noInfo: false,
-  stats: true
-  }
+  stats: true,
 };
 
 const server = new WebpackDevServer(compiler, wdsConfig);
