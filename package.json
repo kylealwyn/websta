@@ -9,7 +9,7 @@
     "dev:app": "ENV=development electron -r babel-register -r babel-polyfill .",
     "dev:server": "ENV=development babel-node dev-server.js",
     "build": "npm run clean && ENV=production webpack --progress --colors",
-    "package": "npm run build && electron-packager . Webbie --platform=darwin --arch=all --prune --overwrite --icon ./HN_icon"
+    "package": "npm run build && electron-packager . Websta --platform=darwin --arch=all --prune --overwrite --icon ./HN_icon"
   },
   "keywords": [],
   "author": "Kyle Alwyn <http://kylealwyn.com>",
