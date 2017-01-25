@@ -9,7 +9,7 @@ const Favorites = ({ router }) => (
 );
 
 Favorites.propTypes = {
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired,
 };
 
 export default withRouter(Favorites);

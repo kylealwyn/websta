@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { hashHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
-import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 import { loadState, saveState } from '../lib/local-storage';
 import rootReducer from './reducers';
 import asyncMiddleware from './middleware/async';
@@ -15,7 +15,7 @@ let composeEnhancers = compose;
 if (__DEV__) {
   middlewares.push(logger({
     level: 'info',
-    collapsed: true
+    collapsed: true,
   }));
 
   /* eslint-disable no-underscore-dangle */
@@ -25,13 +25,13 @@ if (__DEV__) {
 }
 
 const enhancers = composeEnhancers(
-  applyMiddleware(...middlewares)
+  applyMiddleware(...middlewares),
 );
 
 export default () => {
   const store = createStore(rootReducer, loadState(), enhancers);
 
-  store.subscribe(throttle(() => {
+  store.subscribe(debounce(() => {
     saveState(store.getState());
   }, 1000));
 

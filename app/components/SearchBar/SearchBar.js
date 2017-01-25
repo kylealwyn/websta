@@ -4,12 +4,12 @@ import styles from './SearchBar.css';
 
 class SearchBar extends Component {
   state = {
-    query: ''
+    query: '',
   }
 
   componentDidMount() {
     this.awesome = new Awesomplete(this.searchInput, {
-      list: ['Ada', 'Java', 'JavaScript', 'Brainfuck', 'LOLCODE', 'Node.js', 'Ruby on Rails']
+      list: ['Ada', 'Java', 'JavaScript', 'Brainfuck', 'LOLCODE', 'Node.js', 'Ruby on Rails'],
     });
   }
 
@@ -21,7 +21,7 @@ class SearchBar extends Component {
 
   handleQueryChange(event) {
     this.setState({
-      query: event.target.value
+      query: event.target.value,
     });
   }
 

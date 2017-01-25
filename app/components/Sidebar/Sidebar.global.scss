@@ -1,0 +1,94 @@
+@import '../../styles/variables';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,300);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+.sidebar {
+  background: $color-light-gray;
+  width: 200px;
+  padding: 1rem;
+}
+
+/* fontawesome */
+[class*="fa-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.pure-tree {
+  text-align: left;
+  display: block;
+
+  &.main-tree {
+    width: 200px;
+    display: inline-block;
+  }
+
+  &:not(.main-tree) {
+    padding-left: 1.2em;
+
+    li {
+      overflow: hidden;
+      max-height: 0;
+      display: block;
+      transition: 250ms;
+    }
+  }
+
+  label {
+    display: block;
+    cursor: pointer;
+    color: #717780;
+    // border-bottom: 1px dashed #B0B9C5;
+    padding: 0.75rem 0.75rem 0.75rem 0;
+
+    &:before {
+      width: 1em;
+      height: 1em;
+      line-height: 1em;
+      display: inline-block;
+      font-family: 'FontAwesome', sans-serif;
+      content: "\f114";
+      padding-right: .75em;
+    }
+
+    &:hover {
+      color: #434a58;
+      border-bottom-color: #434a58;
+    }
+  }
+
+  .pure-tree_link {
+    a {
+      padding: 0.75rem 1rem 0.75rem 0;
+      display: block;
+      border-radius: .2em;
+      color: #717780;
+      text-decoration: none;
+
+      &:hover {
+          color: #2F3133;
+      }
+    }
+  }
+
+  &.nested {
+      padding-left: 1.7em;
+  }
+
+  [type="checkbox"] {
+      display: none;
+
+      &:checked + label {
+        color: #3988DA;
+        border-bottom-color: #434a58;
+      }
+
+      &:checked ~ ul > li {
+        max-height: 500px;
+      }
+  }
+}

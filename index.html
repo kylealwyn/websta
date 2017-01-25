@@ -7,7 +7,7 @@
   <body>
     <div id="root"></div>
     <script>
-      if (typeof process === 'object' && process.env.ENV === 'development') {
+      if (typeof process === 'object' && process.env.NODE_ENV === 'development') {
         const bundle = document.createElement('script');
         bundle.src = 'http://localhost:3000/build/bundle.js';
         document.head.appendChild(bundle);

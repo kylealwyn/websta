@@ -1,15 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
-import SearchBar from '../components/SearchBar';
+import SnippetList from '../components/SnippetList';
+import Snippet from '../components/Snippet';
 
 const Home = () => (
-  <div className="page home">
-    <SearchBar />
-    <p>aaaa</p>
-    <Link to="/favorites">ads</Link>
-    {/* if no suggestions, display quote
-    if suggestions, display list */}
-    {/* <SuggestionList /> */}
+  <div className="home" style={{display: 'flex', flex: 1}}>
+    <SnippetList />
+    <Snippet />
   </div>
 );
 

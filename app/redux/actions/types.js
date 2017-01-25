@@ -2,8 +2,8 @@ const actions = {
   Auth: {
     Login: 'LOGIN',
     Logout: 'LOGOUT',
-    GetProfile: 'GET_PROFILE'
-  }
+    GetProfile: 'GET_PROFILE',
+  },
 };
 
 const promisifyActionType = (action, type) => ({

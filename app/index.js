@@ -6,13 +6,10 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import configureStore from './redux/store';
 import Root from './containers/Root';
-import './styles/app.global.css';
-import * as actions from './redux/actions/actions';
+import './styles/app.global.scss';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
-
-store.dispatch(actions.createWordsAction());
 
 const ROOT_ID = 'root';
 
@@ -20,7 +17,7 @@ render(
   <AppContainer>
     <Root store={store} history={history} />
   </AppContainer>,
-   document.getElementById(ROOT_ID)
+   document.getElementById(ROOT_ID),
 );
 
 if (module.hot) {
@@ -31,7 +28,7 @@ if (module.hot) {
       <AppContainer>
         <NewRoot store={store} history={history} />
       </AppContainer>,
-      document.getElementById(ROOT_ID)
+      document.getElementById(ROOT_ID),
     );
   });
 }

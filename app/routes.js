@@ -6,7 +6,7 @@ import Favorites from './containers/Favorites';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Home} />
-    <Route path="favorites" component={Favorites} />
+    {/* <IndexRoute component={Home} /> */}
+    <Route path="/:category" component={Home} />
   </Route>
 );

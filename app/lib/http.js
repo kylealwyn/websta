@@ -4,13 +4,13 @@ class Http {
   constructor() {
     this.axios = axios.create({
       baseURL: 'http://localhost:4567',
-      timeout: 5000
+      timeout: 5000,
     });
   }
 
   request(method, url, options = {}) {
     const requestConfig = Object.assign({}, {
-      headers: {}
+      headers: {},
     }, options);
 
     if (localStorage.getItem('token')) {
@@ -20,7 +20,7 @@ class Http {
     return this.axios({
       url,
       method,
-      ...requestConfig
+      ...requestConfig,
     });
   }
 

@@ -8,10 +8,10 @@ const words = {
     }
 
     return state;
-  }
+  },
 };
 
 export default combineReducers({
   ...words,
-  routing
+  routing,
 });

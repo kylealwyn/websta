@@ -3,7 +3,7 @@ import Words from '../../services/words';
 
 export const createWordsAction = () => ({
   type: Types.Auth.Login,
-  promise: Words.test()
+  promise: Words.test(),
 });
 
 export default {};
