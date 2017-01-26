@@ -1,0 +1,66 @@
+$treeview-spacing: 0.5rem;
+
+.treeview {
+  text-align: left;
+  display: block;
+
+  .treeview {
+    // padding-left: $treeview-spacing*2;
+  }
+  
+  .treeview_container {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    padding-left: $treeview-spacing*2;
+  }
+  
+  label {
+    display: block;
+    cursor: pointer;
+    color: #717780;
+    font-weight:  bold;
+    // border-bottom: 1px solid #B0B9C5;
+    padding: $treeview-spacing $treeview-spacing $treeview-spacing 0;
+
+    &:before {
+      width: 1em;
+      height: 1em;
+      line-height: 1em;
+      display: inline-block;
+      font-family: 'FontAwesome', sans-serif;
+      content: "\f114";
+      padding-right: $treeview-spacing;
+    }
+
+    &:hover {
+      color: #434a58;
+      border-bottom-color: #434a58;
+    }
+  }
+
+  span {
+    padding: $treeview-spacing 0 $treeview-spacing 0;
+    display: block;
+    color: #717780;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: #2F3133;
+    }
+  }
+
+  [type="checkbox"] {
+      display: none;
+
+      &:checked + label {
+        color: #3988DA;
+        border-bottom-color: #434a58;
+      }
+
+      &:checked ~ .treeview_container {
+        height: auto;
+      }
+  }
+}

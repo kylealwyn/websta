@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8">
     <title>Websta</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script>
-      if (typeof process === 'object' && process.env.NODE_ENV === 'development') {
+    <script type="text/javascript">
+      if (
+        typeof process === 'object' && 
+        process.env.NODE_ENV === 'development'
+      ) {
         const bundle = document.createElement('script');
         bundle.src = 'http://localhost:3000/build/bundle.js';
         document.head.appendChild(bundle);
       }
     </script>
+  </head>
+  <body>
+    <div id="root"></div>
   </body>
 </html>

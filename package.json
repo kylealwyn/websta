@@ -19,6 +19,7 @@
     "awesomplete": "^1.1.1",
     "axios": "^0.15.3",
     "electron": "^1.0.0",
+    "firebase": "^3.6.7",
     "lodash": "^4.17.2",
     "menubar": "^5.1.0",
     "moment": "^2.12.0",
