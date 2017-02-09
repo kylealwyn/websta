@@ -1,4 +1,5 @@
 import React from 'react';
+import ContentEditable from 'react-contenteditable'
 import styles from './Treeview.global.scss';
 
 const Treeview = ({
@@ -10,7 +11,9 @@ const Treeview = ({
   <ul className="treeview">
     <li>
       <input type="checkbox" id={`${name}_trigger`} defaultChecked={!collapsed} />
-      <label className={collapsed ? 'treeview-active' : ''} htmlFor={`${name}_trigger`} onClick={onClick}>{name}</label>
+      <label className={collapsed ? 'treeview-active' : ''} htmlFor={`${name}_trigger`} onClick={onClick} onContextMenu={onClick}>
+        {name}
+      </label>
       
       <div className="treeview_container">
         {children}

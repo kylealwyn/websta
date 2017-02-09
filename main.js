@@ -62,16 +62,17 @@ app.on('ready', async () => {
 
   if (process.env.NODE_ENV === 'development') {
     mainWindow.openDevTools();
-    mainWindow.webContents.on('context-menu', (e, props) => {
-      const { x, y } = props;
+    // mainWindow.webContents.on('context-menu', (e, props) => {
+    //   console.log(e, props)
+    //   const { x, y } = props;
 
-      Menu.buildFromTemplate([{
-        label: 'Inspect element',
-        click() {
-          mainWindow.inspectElement(x, y);
-        }
-      }]).popup(mainWindow);
-    });
+    //   Menu.buildFromTemplate([{
+    //     label: 'Inspect element',
+    //     click() {
+    //       mainWindow.inspectElement(x, y);
+    //     }
+    //   }]).popup(mainWindow);
+    // });
   }
 
   if (process.platform === 'darwin') {

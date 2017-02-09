@@ -1,4 +1,6 @@
 $treeview-spacing: 0.5rem;
+$treeview-active-color: #3988DA;
+$treeview-inactive-color: #434a58;
 
 .treeview {
   text-align: left;
@@ -10,9 +12,10 @@ $treeview-spacing: 0.5rem;
   
   .treeview_container {
     display: block;
-    height: 0;
-    overflow: hidden;
+    transform: scaleY(0);
     padding-left: $treeview-spacing*2;
+    transition: 175ms;
+    transform-origin: 50% 0;
   }
   
   label {
@@ -34,8 +37,8 @@ $treeview-spacing: 0.5rem;
     }
 
     &:hover {
-      color: #434a58;
-      border-bottom-color: #434a58;
+      color: $treeview-inactive-color;
+      border-bottom-color: $treeview-inactive-color;
     }
   }
 
@@ -55,12 +58,12 @@ $treeview-spacing: 0.5rem;
       display: none;
 
       &:checked + label {
-        color: #3988DA;
-        border-bottom-color: #434a58;
+        color: $treeview-active-color;
+        border-bottom-color: $treeview-inactive-color;
       }
 
       &:checked ~ .treeview_container {
-        height: auto;
+        transform: scaleY(1);
       }
   }
 }

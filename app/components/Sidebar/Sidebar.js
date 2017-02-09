@@ -8,16 +8,14 @@ class Sidebar extends Component {
 
   componentDidMount() {}
 
-  handleQueryChange(event) {
-    this.setState({
-      query: event.target.value,
-    });
+  handleQueryChange = (event) => {
+    console.log(event);
   }
 
   render() {
     return (
       <div className="sidebar">
-        <Treeview name="views">
+        <Treeview name="views" onClick={this.handleQueryChange} onContextMenu={this.handleQueryChange}>
           <Treeview name="partials">
             <Treeview name="components">
               <span>index.html</span>
